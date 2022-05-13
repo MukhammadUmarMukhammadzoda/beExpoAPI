@@ -15,6 +15,9 @@ class Ari(models.Model):
     def __str__(self):
         return self.nomi
 
+    objects: models.Manager()
+
+
 
 class Asal(models.Model):
     nomi = models.CharField(max_length=50, blank=True, null=True)
@@ -25,6 +28,8 @@ class Asal(models.Model):
 
     def __str__(self):
         return self.nomi
+    
+    objects: models.Manager()
 
 
 class Company(models.Model):
@@ -46,12 +51,5 @@ class Klient(models.Model):
     def __str__(self):
         return self.ismi
 
-class Comment(models.Model):
-    owner = models.CharField(max_length=30, null=True)
-    message = models.CharField(max_length=150, null=True)
-    score = models.IntegerField(validators=[ MaxValueValidator(5), MinValueValidator(1)])
 
-
-    def __str__(self):
-        return self.owner
 
