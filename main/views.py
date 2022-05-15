@@ -41,4 +41,15 @@ class Aridetail(generics.RetrieveAPIView):
     queryset = Ari.objects.all()
     serializer_class = AriSerializer
 
+
+class IngradientView(generics.ListCreateAPIView):
+    queryset = Ingradient.objects.all()
+    serializer_class = IngradientSerializer
+
+
+class Ingradientdetail(generics.RetrieveAPIView):
+    queryset = Ingradient.objects.all()
+    serializer_class = IngradientSerializer
+
+
     

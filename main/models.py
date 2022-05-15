@@ -15,7 +15,6 @@ class Ari(models.Model):
     def __str__(self):
         return self.nomi
 
-    objects: models.Manager()
 
 
 
@@ -52,4 +51,15 @@ class Klient(models.Model):
         return self.ismi
 
 
+
+class Ingradient(models.Model):
+    nomi = models.CharField(max_length=50, blank=True, null=True)
+    rasmi = models.ImageField(upload_to = 'images')
+    video_link = models.CharField(max_length=150, blank=True)
+    narxi = models.FloatField()
+    malumot = models.TextField(blank=True, null=True)
+
+    
+    def __str__(self):
+        return self.nomi
 

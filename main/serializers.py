@@ -21,3 +21,9 @@ class KlientSerializer(serializers.ModelSerializer):
         model = Klient
         fields = "__all__"
 
+class IngradientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingradient
+        fields = "__all__"
+
+
