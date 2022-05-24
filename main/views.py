@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from requests import Response
+from rest_framework.response import Response
 from .serializers import *
 from rest_framework import generics,permissions
 from .models import *
@@ -53,18 +53,29 @@ class Ingradientdetail(generics.RetrieveAPIView):
     serializer_class = IngradientSerializer
 
 
-@api_view(['post'])
+@api_view(['POST'])
 def SendEmailView(request):
-    email_admin = 'mukhmmadzodamukhammadumar@gmail.com'
-    user_email = request.POST['email']
-    name = request.POST['name']
-    subject = request.POST['subject']
-    message = request.POST['message']
-    send_mail(
-        f'{subject} from {user_email}  '
-        
-        ,
-         f'{message}',
+    try:
+        email_admin = 'mukhammadzodamukhammadumar@gmail.com'
+        user_email = request.data['email']
+        name = request.data['name']
+        subject = request.data['subject']
+        message = request.data['message']
+        send_mail(
+            f'{subject} from {user_email}  '
+            
+            ,
+            f'{message}',
 
-                      settings.DEFAULT_FROM_EMAIL, [email_admin])
-    return Response([])
+                        settings.DEFAULT_FROM_EMAIL, [email_admin])
+        data = {
+            "success":True,
+            "data":{}
+        }
+    except Exception as err:
+        data = {
+            "success":False,
+            "error":f"{err}"
+        }
+
+    return Response(data)

@@ -10,7 +10,7 @@ urlpatterns = [
     path('ari/<int:pk>', views.Aridetail.as_view()),
     path('ingradient/', views.IngradientView.as_view()),
     path('ingradient/<int:pk>/', views.Ingradientdetail.as_view()),
-    path('contact', views.contactform, name='contact')
+    path('contact', views.SendEmailView, name='contact')
 
 
 
